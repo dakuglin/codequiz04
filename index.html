@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title> <!--browser tab description -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css"> <!--link the .css sytle sheet-->
+</head>
+<body>
+    <!--navigation bar at top of screen-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+                <li class="nav-item">
+                <a class="nav-link" href="#">View Highscores</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled" href="#">Time:</a>
+                </li> 
+          </ul>
+        </div>
+      </nav>
+    <!--div containing opeing page before game starts-->
+    <div class="container">
+        <header>
+            <h1>Coding Quiz Challenge</h1> <!--main title of the webpage-->
+        </header>
+        <div class="card">
+            <div class="card-header">
+                <h2 id="questions">Directions</h2>
+            </div>
+            <div class="card-body">
+                
+                    <li id="d1">Press the start button below to begin.</li> 
+                    <li id="d2">You will have 30 seconds to complete the quiz.</li> 
+                    <li id="d3">Every incorrect response will deduct time from your quiz.</li>
+               
+                <button type="button" id= "btn1" class="btn btn-primary btn-lg">Large button</button>
+                <button type="button" id= "btn2" class="btn btn-primary btn-lg">Large button</button>
+                <button type="button" id= "btn3" class="btn btn-primary btn-lg">Large button</button>
+                <button type="button" id= "btn4" class="btn btn-primary btn-lg">Large button</button>
+                
+            </div> 
+        </div>
+    </div>
+    <div class="card-footer">        
+        <button type="button"  id="startQuiz" class="btn btn-primary btn-lg">Start</button>
+        <h2 id="correct-wrong"></h2>
+    </div>
+
+  <script src="script.js"></script> <!--link to the script.js file-->
+
+</body>
+</html>
+
+
+  <!-- </div> -->
+          <!-- <div class="card-body-start">
+                <ul>
+                    <li>Press the start button below to begin.</li> 
+                    <li>You will have 30 seconds to complete the quiz.</li> 
+                    <li>Every incorrect response will deduct time from your quiz.</li>
+                </ul>
+          </div> -->
+
+
+           <!-- div containing game content
+           <button type="button" id= "userAnswer" class="btn btn-primary btn-lg">Large button</button>
+           <button type="button" id= "userAnswer" class="btn btn-primary btn-lg">Large button</button>
+           <button type="button" id= "userAnswer" class="btn btn-primary btn-lg">Large button</button>
+           <button type="button" id= "userAnswer" class="btn btn-primary btn-lg">Large button</button>
+           <div id="quizResults">
+        -->

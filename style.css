@@ -1,0 +1,74 @@
+
+ /* controls the webpage background color and font of text (sans-serif) */
+ body {
+   font-family: sans-serif;
+   background-color: whitesmoke;
+ }
+ 
+ /* controls the placement of all the tags, box, buttons, on the webpage */
+ .container {
+   padding-top: 150px;
+   padding-left: 20px;
+   padding-right: 20px;
+ }
+ 
+ /* controls the placement, location, and color of the h1 tag on the webpage */
+ header {
+   text-align: center;
+   padding: 20px;
+   padding-top: 0px;
+   color: black;
+   font-size: 50px;
+ }
+ 
+ /* controls the entire look of the box in the middle of the page on the browser  */
+ .card {
+   background-color: white;
+   border-top: solid black;
+   border-bottom: solid black;
+   border-left: solid black;
+   border-right: solid black; 
+   border-radius: 5px;
+   border-width: 1px;
+   color: hsl(206, 17%, 28%); 
+   font-size: 20px;
+   margin: 0 auto;
+   max-width: 800px;
+   padding: 30px 40px;
+ }
+ 
+ h2 {
+    color:black;
+    font-size: 34px;
+ }
+
+ /* controls the body of the card  */
+ .card-body {
+   /* padding-top:20px;
+   min-height: 200px;
+   color: black; */
+ }
+ 
+ /* controls the  */
+ .card-footer {
+   text-align: center;
+ }
+ 
+ /* controls the  */
+ .btn {
+   border: none;
+   background-color: rgb(54, 2, 52);
+   border-radius: 25px;
+   color: white;
+   display: inline-block;
+   font-size: 22px;
+   line-height: 22px;
+   margin: 16px 16px 16px 20px;
+   padding: 14px 34px;
+   text-align: center;
+   cursor: pointer;
+ }
+ 
+
+
+ 

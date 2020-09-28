@@ -22,7 +22,7 @@
  }
  
  /* controls the entire look of the box in the middle of the page on the browser  */
- .card {
+ .directions {
    background-color: white;
    border-top: solid black;
    border-bottom: solid black;
@@ -50,7 +50,7 @@
  }
  
  /* controls the  */
- .card-footer {
+ .footer {
    text-align: center;
  }
  

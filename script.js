@@ -27,87 +27,326 @@ console.log(btn4);
 btn4.style.visibility = "hidden"; // hiding my quiz buttons
 
 
-
-
-
-
-// var questionOneAnswer = document.getElementById("btn1").innerText;
-// console.log(questionOneAnswer);
-
-// var buttonSection = document.getElementsByClassName("card-body");
-// console.log(buttonSection);
-
-//var btn1 = document.getElementById("btn1").innerHTML;
-//console.log(btn1DAK); // this is "Large button"
-//btn1DAK = "NEW"
-// var newbtn1 = btn1.append("//")
-// console.log(btn)
-
-
-
-
-// var userAnswer = document.getElementById("#userAnswer");
-// console.log(userAnswer);
-
-// var quizResults = document.getElementById("#quizResults");
-// console.log(quizResults);
-
-// var questions = [questionquestionOne, questionTwo];
-// console.log(questions)
-
+let btnArray = [btn1, btn2, btn3, btn4]; // global variable 
 
 
 // Functions
 //----------------------------------------------------------------------------------------------
-
-// button will be on browser asking user if they would like to take a JS quiz
-
+//______________________________________________________________________________________________
+    // button will be on browser asking user if they would like to take a JS quiz
     // when button is pressed, quiz starts and timer starts
+        
     startQuizBtn.addEventListener("click", function startQuiz() {
 
-        document.getElementById("questions").innerHTML = questionOne();
-
-        document.getElementById("d1").style.visibility = "hidden";
+        document.getElementById("startQuiz").style.visibility = 'hidden'; // hide start button when quiz starts
+        
+        // hides the directions once the start button is pressed
+        document.getElementById("d1").style.visibility = "hidden"; 
         document.getElementById("d2").style.visibility = "hidden";
-        document.getElementById("d3").style.visibility = "hidden";
- 
+        document.getElementById("d3").style.visibility = "hidden";   
 
-        //controls the visibility of the buttons for question 1 & what they say
-        btn1.style.visibility = "visible";
-         btn1.innerHTML = "//";
-        btn2.style.visibility = "visible";
-        btn2.innerHTML = "&&";
-        btn3.style.visibility = "visible";
-        btn3.innerHTML = "/* */";
-        btn4.style.visibility = "visible";
-        btn4.innerHTML = "!!";
-     
-        document.getElementById("startQuiz").style.visibility = 'hidden'; //hiding start button after the user starts the quiz    
+        //document.getElementById("questions").innerHTML = questionOne();
+        var start = questionOne();
+        return start;
     });
 
 
+    //startQuizBtn.addEventListener("click", startQuiz)
+    function questionOne() { 
+
+             //user is presented with first multiple choice question
+            document.getElementById("questions").innerHTML = "What symbol is used for adding comments in JavaScript?"
+
+           
+            //controls the visibility of the buttons for question 2 & what they say
+            btn1.style.visibility = "visible";
+            btn1.innerHTML = "//";
+            btn2.style.visibility = "visible";
+            btn2.innerHTML = "&&";
+            btn3.style.visibility = "visible";
+            btn3.innerHTML = "/* */";
+            btn4.style.visibility = "visible";
+            btn4.innerHTML = "!!";
+    
+            document.querySelectorAll(".Q").forEach(btnArray => {
+            btn1.addEventListener("click", event => {
+                btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+               //  if (event === btnArray[0]){
+               //    alert("You got it correct!")
+               //  };
+             });
+             btn2.addEventListener("click", event => {
+                btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+               //  if (event === "&&") {
+
+               //  };
+             });
+             btn3.addEventListener("click", event => {
+                btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+             });
+             btn4.addEventListener("click", event => {
+                btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+             });
+
+            });
+
+        return questionOne;
+
+    };
+
+    btn1.addEventListener("click", questionTwo)
+
+   
+//___________________________________________________________________________________________
 
 
-    //btn1.addEventListener("click", function ansQuestion1(){
+    function questionTwo () {
 
-        //alert("YES I DID IT")
-        // document.getElementById("correct-wrong").innerHTML = "Correct!"
+        document.getElementById("questions").innerHTML = "When was JavaScript created?";
 
-        // if (btn1.onclick === true) {
-        //     alert("YES I DID IT AGAIN")
-        //     //document.getElementById("correct-wrong").innerHTML = "Correct!"
-        //  } 
-        //  else {
-        //     document.getElementById("correct-wrong").innerHTML = "Incorrect!"
-        // }
-    //});
+          //controls the visibility of the buttons for question 2 & what they say
+          btn1.innerHTML = "incorrect Q2";
+          btn2.innerHTML = "incorrect Q2";
+          btn3.innerHTML = "correct Q2";
+          btn4.innerHTML = "incorrect Q2";
+         
+         document.querySelectorAll(".Q").forEach(btnArray => {
+         btn1.addEventListener("click", event => {
+            btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+         });
+         btn2.addEventListener("click", event => {
+            btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+         });
+         btn3.addEventListener("click", event => {
+            btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+         });
+         btn4.addEventListener("click", event => {
+            btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+        });
 
-    function questionOne() {   
-    //     //user is presented with first multiple choice question
-         var questionquestionOne = "What symbol is used for adding comments in JavaScript?"
+    });
+    
 
-         return questionquestionOne;
-     };
+};
+btn3.addEventListener("click", questionThree)
+
+//___________________________________________________________________________________________
+
+function questionThree () {
+
+    document.getElementById("questions").innerHTML = "Is this working question three?";
+
+      //controls the visibility of the buttons for question 2 & what they say
+      
+      btn1.innerHTML = "incorrect Q3";
+      btn2.innerHTML = "correct Q3";
+      btn3.innerHTML = "incorrect Q3";
+      btn4.innerHTML = "incorrect Q3";
+  
+
+   document.querySelectorAll(".Q").forEach(btnArray => {
+   btn1.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    });
+    btn2.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+    });
+    btn3.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    });
+    btn4.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    });
+
+   });
+
+    //return questionThree;
+    btn2.addEventListener("click", questionFour)
+};
+
+btn2.addEventListener("click", questionFour)
+
+
+//___________________________________________________________________________________________
+
+function questionFour () {
+
+    document.getElementById("questions").innerHTML = "Is this working question four?";
+
+      //controls the visibility of the buttons for question 2 & what they say
+      
+      btn1.innerHTML = "incorrect Q3";
+      btn2.innerHTML = "incorrect Q3";
+      btn3.innerHTML = "incorrect Q3";
+      btn4.innerHTML = "correct Q3";
+    
+
+   document.querySelectorAll(".Q").forEach(btnArray => {
+   btn1.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    });
+    btn2.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+    });
+    btn3.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    });
+    btn4.addEventListener("click", event => {
+       btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+    });
+
+   });
+
+    //return questionThree;
+    btn4.addEventListener("click", results)
+};
+
+btn4.addEventListener("click", results)
+
+
+
+ function results() {
+
+    document.getElementById("questions").innerHTML = "Congratulations on completing the quiz!";
+
+    // hiding the buttons used for user to submit quiz answers
+    btn1.style.visibility = "hidden";
+    btn2.style.visibility = "hidden";
+    btn3.style.visibility = "hidden";
+    btn4.style.visibility = "hidden";
+    
+
+    document.getElementById("d3").style.color = "green";
+
+
+ };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //         document.querySelectorAll(".Q").forEach(btnArray => {
+    //             btn1.addEventListener("click", event => {
+    //                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    //              })
+    //              btn2.addEventListener("click", event => {
+    //                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    //              })
+    //              btn3.addEventListener("click", event => {
+    //                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+    //              })
+    //              btn4.addEventListener("click", event => {
+    //                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+    //              })
+            
+                 
+    //         });
+    //         return questionTwo;
+    //     };
+    
+    // });
+
+    
+//___________________________________________________________________________________________
+
+// btn3.addEventListener("click", function startquestion2() {
+
+//     document.getElementById("questions").innerHTML = questionThree();
+
+//     btn1.innerHTML = "incorrect";
+//     btn2.innerHTML = "incorrct";
+//     btn3.innerHTML = "correct";
+//     btn4.innerHTML = "incorrect";
+
+
+//     function questionThree() {
+
+//         var questionThree = "When was javascript created?"
+        
+       
+//         document.querySelectorAll(".Q").forEach(btnArray => {
+//             btn1.addEventListener("click", event => {
+//                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+//              })
+//              btn2.addEventListener("click", event => {
+//                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+//              })
+//              btn3.addEventListener("click", event => {
+//                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Correct!";
+//              })
+//              btn4.addEventListener("click", event => {
+//                 btnArray =  document.getElementById("correct-wrong").innerHTML = "Incorrect!";
+//              })
+        
+             
+//         });
+//         return questionThree;
+//     };
+
+// });
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
      //document.getElementById("questions").innerHTML = questionOne();
 
@@ -148,56 +387,26 @@ btn4.style.visibility = "hidden"; // hiding my quiz buttons
         //  };
      
 
-  
+    //btn1.addEventListener("click", function ansQuestion1(){
 
+        //alert("YES I DID IT")
+        // document.getElementById("correct-wrong").innerHTML = "Correct!"
 
-
-
+        // if (btn1.onclick === true) {
+        //     alert("YES I DID IT AGAIN")
+        //     //document.getElementById("correct-wrong").innerHTML = "Correct!"
+        //  } 
+        //  else {
+        //     document.getElementById("correct-wrong").innerHTML = "Incorrect!"
+        // }
+    //});
 
 
     
-       
-    function questionTwo() {
 
-        var questionquestionOne = "When was javascript invented?"
-        return questionquestionOne;
-        //var questionTwo = "Question 2?"
-        // second multiple choice question appears
-            //if correct, alerts Correct!
-            //if wrong, alerts Wrong! and time decucts 
-        //return questionTwo;
-    };
-   
+    // };
     
-
-    function questionThree() {
-        // third multiple choice question appears
-            //if correct, alerts Correct!
-            //if wrong, alerts Wrong! and time decucts 
-
-    };
-       
-
-    function questionFour() {
-        // fourth multiple choice question appears
-            //if correct, alerts Correct!
-            //if wrong, alerts Wrong! and time decucts 
-
-
-    };
-
-    function questionFive() {
-            // fifth multiple choice question appears
-            //if correct, alerts Correct!
-            //if wrong, alerts Wrong! and time decucts
-
-
-    };
-    
-    function gameOver () {
-         // game is now over
-            // ask user to save initials and score
-            //ask if they would like to play again
-
-    };
-       
+    // function gameOver () {
+    //      // game is now over
+    //         // ask user to save initials and score
+    //         //ask if they would like to play again

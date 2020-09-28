@@ -30,9 +30,13 @@ THEN I can save my initials and score
 
 * // button will be on browser asking user if they would like to take a JS quiz
     * // when button is pressed, quiz starts and timer starts
-         * //user is presented with first   multiple choice question
+
+
+    // can this all be done in a self containing loop???
+         * //user is presented with first multiple choice question
             * //if correct, alerts Correct!
             * //if wrong, alerts Wrong! and time decucts 
+
         * // second multiple choice question appears
             * //if correct, alerts Correct!
             * //if wrong, alerts Wrong! and time decucts 

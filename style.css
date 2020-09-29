@@ -22,7 +22,7 @@
  }
  
  /* controls the entire look of the box in the middle of the page on the browser  */
- .directions {
+ .styling {
    background-color: white;
    border-top: solid black;
    border-bottom: solid black;
@@ -33,7 +33,7 @@
    color: hsl(206, 17%, 28%); 
    font-size: 20px;
    margin: 0 auto;
-   max-width: 800px;
+   max-width: 1500px;
    padding: 30px 40px;
  }
  
@@ -44,13 +44,14 @@
 
  /* controls the body of the card  */
  .card-body {
+   text-align: center;
    /* padding-top:20px;
    min-height: 200px;
    color: black; */
  }
  
  /* controls the  */
- .footer {
+ .center {
    text-align: center;
  }
  

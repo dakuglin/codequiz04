@@ -15,10 +15,20 @@
  /* controls the placement, location, and color of the h1 tag on the webpage */
  header {
    text-align: center;
-   padding: 20px;
+   padding: 30px;
    padding-top: 0px;
    color: black;
    font-size: 50px;
+ }
+
+ h1 {
+  padding-top: 50px;
+  font-size: 50px;
+ }
+
+ .quiz-scores {
+  font-size: 50px;
+  padding-left: 120px;
  }
  
  /* controls the entire look of the box in the middle of the page on the browser  */
@@ -40,6 +50,7 @@
  h2 {
     color:black;
     font-size: 34px;
+  
  }
 
  /* controls the body of the card  */

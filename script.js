@@ -6,31 +6,31 @@ var questionArray = [ // object were I am storing all of the questions, button i
     { 
     question: "What is the correct symbol for adding comments in JavaScript?",
     buttons: ["//", "<!--", "/*", "!!"],
-    answer: "correct Q1",
+    answer: "//",
     },
         
     {
-    question: "Question 2?",
-    buttons: ["incorrect", "incorrect","correct Q2", "incorrect"],
-    answer: "correct Q2",
+    question: "What is an array?",
+    buttons: ["A function", "A string","A Collection of Data", "A Boolean"],
+    answer: "A Collection of Data",
     },
             
     {
-    question: "Question 3?",
-    buttons: ["incorrect", "correct Q3", "incorrect", "incorrect"],
-    answer: "correct Q3",
+    question: "When was JavaScript created?",
+    buttons: ["2020", "1995", "2018", "2000"],
+    answer: "1995",
     },
             
     {
-    question: "Question 4?",
-    buttons: ["incorrect", "incorrect", "incorrect", "correct Q4"],
+    question: "What is a ?",
+    buttons: ["incorrect", "incorrect", "incorrect", "True or False"],
     answer: "correct Q4",
     },
         
 ]
 
 var currentQuestionIndex = 0;
-var secondsLeft = 30;
+var secondsLeft = 30; //seconds to take the quiz
 
 //var currentQuizQuestion = questionArray[currentQuestionIndex];
 // console.log(currentQuizQuestion);
@@ -136,28 +136,13 @@ function quizEnd() {
         timeEl.textContent = secondsLeft
 
         if(secondsLeft ===0) {
-            clearInterval(timeEl);
+            clearInterval(countdown);
         }
     }, 1000);
 
 
     
     
-    
-//     document.log(countdown);
-
-//     quizTime--;
-//     countdown.textContent = time;
-  
-//     // check if user ran out of time
-//     if (time <= 0) {
-//       quizEnd();
-//     }
-//   }
-
-
-
-
 
  // for (var i=0; i < questionArray.length; i++); {
 

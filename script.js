@@ -1,7 +1,11 @@
-// Global Variables
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
+//Global Variables
+//-----------------------------------------------------------------------------------------------------------
 
-var questionArray = [ // object were I am storing all of the questions, button informaiton, and answers
+var currentQuestionIndex = 0; //index for questionArray location
+
+var secondsLeft = 30; //seconds to take the quiz
+
+var questionArray = [ //object were I am storing all of the questions, button informaiton, and answers
 
     { 
     question: "What is the correct symbol for adding comments in JavaScript?",
@@ -29,22 +33,17 @@ var questionArray = [ // object were I am storing all of the questions, button i
         
 ]
 
-var currentQuestionIndex = 0;
-var secondsLeft = 30; //seconds to take the quiz
-
-
-
-
 
 // Functions 
 //-----------------------------------------------------------------------------------------------------------
 
 function startQuiz() {
 
-    displayQuiz(); // call this function to dispaly quiz presses the start button
-    countdown(); // start quiz countdown when start quiz button is pressed 
+    dynamicQuestion(); //call this function to dispaly quiz presses the start button
+    dynamicButtons()
+    countdown(); //start quiz countdown when start quiz button is pressed 
 
-    // dynamically remove all the pre-quiz HTML content
+    //dynamically remove all the pre-quiz HTML content
     var hideVisible = document.getElementById("start-of-quiz"); // creating a variable for all of the content I want to remove/hide in JS when the quiz starts
         //hideVisible.setAttribute("class","hide")
     hideVisible.remove(); // removes the div in my HTML
@@ -56,67 +55,56 @@ function startQuiz() {
 };
 
 
-function displayQuiz() {
-
+function dynamicQuestion() {
+    
     // starting at currentQuestionIndex of 0, global variable above
     var currentQuizQuestion = questionArray[currentQuestionIndex];
-    console.log(currentQuizQuestion);
-
-
+    //console.log(currentQuizQuestion)
+   
     var questionElement = document.getElementById("questions"); // variable for where I will dynamically access the <h2> tag where the questions will go
     questionElement.textContent = currentQuizQuestion.question;
+    //console.log(questionElement.textContent)
 
-    console.log(questionElement.textContent)
-
-    questionElement.innerHTML = "";
-
-
-    currentQuizQuestion.btnChoices.forEach(function(buttons) { 
-
-        //console.log(buttons);
-
-        var dynamicButtons = document.createElement("BUTTON");
-        dynamicButtons.setAttribute("dynamic-buttons", "buttons")
-        dynamicButtons.setAttribute("value",buttons)
-        dynamicButtons.textContent = buttons;
-
-        document.body.appendChild(dynamicButtons);
-        dynamicButtons.onclick = handleDynamicBtns;
-    })
-
-    
-  
-   
+    currentQuestionIndex++; // add one to index next time it goes though functions
 };
 
 
-function handleDynamicBtns() {
+function dynamicButtons() {
 
+    var currentQuizQuestion = questionArray[currentQuestionIndex];
+    console.log(currentQuizQuestion);
+
+     currentQuizQuestion.btnChoices.forEach(function(buttons) { 
+
+        var dynamicButtons = document.createElement("BUTTON");
+        dynamicButtons.setAttribute("questions", "buttons")
+        dynamicButtons.setAttribute("value",buttons)
+        dynamicButtons.textContent = buttons;
+        document.body.appendChild(dynamicButtons);
+        dynamicButtons.onclick = handleClickDynamicBtns;
+    }) 
+    currentQuestionIndex++; // add one to index next time it goes though functions
+};
+
+
+function handleClickDynamicBtns(e) {
+
+    e.preventDefault();
 
     var dynamicBtnAns = questionArray[currentQuestionIndex].answer;
-    console.log(dynamicBtnAns);
+    console.log(dynamicBtnAns)
+    var alertAns = document.getElementById("correct-incorrect");
 
-     if (this.value !== dynamicBtnAns) { //.this refers to my questionArray object
-       
-        var alertAns = document.getElementById("correct-incorrect");
+     if (this.value !== dynamicBtnAns) { //.this refers to my questionArray object 
         alertAns.textContent = "Incorrect!"
-     }
-     else {
+     } else {
          alertAns.textContent = "Correct!"
      };
+    
+    //currentQuestionIndex++; // add one to index next time it goes though functions
+    console.log(currentQuestionIndex)
 
-      currentQuestionIndex++;
-
-      if (currentQuestionIndex === questionArray.length) {
-          endQuiz();
-      } 
-      else {
-          displayQuiz ();
-      };
-  
-   
-       
- };
+};
 
 
 
@@ -131,8 +119,15 @@ function handleDynamicBtns() {
      console.log(endScreen)
      endScreen.removeAttribute("class");
 
- };
+     if (currentQuestionIndex === questionArray.length) {
+        endQuiz();
+    } 
+    else {
+        displayQuiz ();
+        return currentQuestionIndex;
+    };
 
+ };
 
 
  function countdown() {
@@ -146,7 +141,7 @@ function handleDynamicBtns() {
         if(secondsLeft === 0) {
             clearInterval(countdown);
         } else {
-            displayQuiz()
+            dynamicQuestion();
         }
 
     }, 1000);
@@ -155,54 +150,3 @@ function handleDynamicBtns() {
  startQuizBtn.addEventListener("click", startQuiz); // when start button pressed quiz will start
 
  
-
-    
-
- // for (var i=0; i < questionArray.length; i++); {
-
-    //     var dynamicButtons = questionArraydocument.createElement("BUTTON");
-    //     console.log(dynamicButtons)
-    //     dynamicButtons.setAttribute("btnQuestions",buttons)
-    //     dynamicButtons.textContent = buttons;
-    //     dynamicButtons.innerHTML = currentButtons;
-    //     console.log(dynamicButtons.innerHTML)
-    //     document.body.appendChild(dynamicButtons);
-
-    // }
-
-
-
-    
-
-
-    // for (var i=0; i <  questionArray.length; i++) {
-    //     var currentQuizQuestion = questionArray[0].question;
-    //     console.log(currentQuizQuestion);
-    //     document.getElementById("questions").innerHTML = currentQuizQuestion
-    // }
-    //  for (var i=0; i <  questionArray.length; i++) {
-
-    //  function buttons() {
-
-
-
-
-//     var currentButtons = questionArray[currentQuestionIndex].buttons;
-//     console.log(currentButtons);
-     
-//     currentButtons.forEach(function(buttons) {  // specifically for iterating over an array (.forEach)
-
-//         var dynamicButtons = document.createElement("BUTTON");
-//         dynamicButtons.setAttribute("dynamic-buttons", "buttons")
-//        // dynamicButtons.setAttribute("value",buttons)
-//         dynamicButtons.textContent = buttons;
-
-//         dynamicButtons.onclick = handleDynamicBtns()
-    
-//         document.body.appendChild(dynamicButtons);
-       
-//         dynamicButtons.onclick = handleDynamicBtns();
-
-//     })
-
-//  };

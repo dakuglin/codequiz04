@@ -12,15 +12,12 @@
     <header>
         <h1>Coding Quiz Challenge</h1>
     </header>
-    <div id="quiz-scores">  <!-- <div></div>  timer and high schores will go in this div-->
-        Time: 
-        <span id="time"></span>
+    <div class="center">
+    <div id="quiz-scores">Time: <span id="time"></span></div>
     </div>
-
     <div class="container"> 
 
-
-        <div id="start-of-quiz" class="hideWhenQuizStarts styling">
+        <div class="visible" id="start-of-quiz">
             <h2>Directions</h2>
 
             <p>
@@ -31,26 +28,36 @@
                 Every incorrect response will deduct time from your quiz.
             </p>
           
-            <div class="center">
             <button type="button" id= "startQuizBtn" class="btn btn-primary btn-lg">Start Quiz</button>
-        </div>
            
         </div>
 
-        <div class="buttons" id="show-When-Quiz-Starts">
+        <div class="invisible" id="questions-buttons"> <!--dont want to be seen till quiz starts-->
 
             <h2 id="questions"></h2><!--will dynamically show my questions-->
                 <div id="dynamic-buttons">
                     <!--will dynamically create my buttons here -->
                 </div>
 
-                <div id="correct-incorrect"></div> <!--will dynaimcallu show if they press the correnct button or not-->
+                <div id="correct-incorrect"></div> <!--will dynaimcally show if they press the correnct button or not-->
             
         </div>
 
-    </div>  
+        <div class="invisible" id="quiz-ends">
+            <h2>Congratulations!</h2>
+                 <p>
+                     You completed the quiz! Your score is <span id="score">.</span>
+                <br>
+                     Please enter your initials: <input type="text" id="initials"/>
+                </p> 
+               
+                    <button type="button" id= "score-button" class="btn btn-primary btn-sm">Submit Results</button>
+                
+               
+        </div>
 
-  
+
+    </div>  
 
     <script src="script.js"></script>
 </body>

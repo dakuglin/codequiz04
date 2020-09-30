@@ -14,59 +14,45 @@
  
  /* controls the placement, location, and color of the h1 tag on the webpage */
  header {
-   text-align: center;
-   padding: 30px;
-   padding-top: 0px;
-   color: black;
-   font-size: 50px;
- }
+   padding: 80px;
+ } 
 
+/* controls the h1 tag*/
  h1 {
-  padding-top: 50px;
   font-size: 50px;
- }
+  text-align: center;
+  padding-top: 30px;
+  color: black;
+  font-size: 50px; 
+ } 
 
- .time {
-  font-size: 50px;
-  text-alling: center;
- }
  
  /* controls the entire look of the box in the middle of the page on the browser  */
- .styling {
+ .visible {
    background-color: white;
-   border-top: solid black;
-   border-bottom: solid black;
-   border-left: solid black;
-   border-right: solid black; 
    border-radius: 5px;
    border-width: 1px;
    color: hsl(206, 17%, 28%); 
    font-size: 20px;
    margin: 0 auto;
-   max-width: 1500px;
+   max-width: 1300px;
    padding: 30px 40px;
- }
- 
- h2 {
-    color:black;
-    font-size: 34px;
   
  }
 
- /* controls the body of the card  */
- .card-body {
-   text-align: center;
-   /* padding-top:20px;
-   min-height: 200px;
-   color: black; */
- }
+  .container {
+    background-color: white;
+    border-radius: 5px;
+    border-width: 1px;
+    color: hsl(206, 17%, 28%); 
+    font-size: 20px;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 30px 40px;
+    
+  }
  
- /* controls the  */
- .center {
-   text-align: center;
- }
- 
- /* controls the  */
+ /* controls the start button */
  .btn {
    border: none;
    background-color: rgb(54, 2, 52);
@@ -79,7 +65,18 @@
    padding: 14px 34px;
    text-align: center;
    cursor: pointer;
- }
+   
+ } 
+
+ .invisible {
+  display: none;
+}
+
+#quiz-scores {
+  text-align: center;
+  font-size: 45px;
+  padding-bottom: 30px;
+}
  
 
 

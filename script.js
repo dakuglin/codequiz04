@@ -5,26 +5,26 @@ var questionArray = [ // object were I am storing all of the questions, button i
 
     { 
     question: "What is the correct symbol for adding comments in JavaScript?",
-    buttons: ["//", "<!--", "/*", "!!"],
+    btnChoices: ["//", "<!--", "/*", "!!"],
     answer: "//",
     },
         
     {
     question: "What is an array?",
-    buttons: ["A function", "A string","A Collection of Data", "A Boolean"],
-    answer: "A Collection of Data",
+    btnChoices: ["A function", "A string","A collection of data", "A boolean"],
+    answer: "A collection of data",
     },
             
     {
     question: "When was JavaScript created?",
-    buttons: ["2020", "1995", "2018", "2000"],
+    btnChoices: ["2020", "1995", "2018", "2000"],
     answer: "1995",
     },
             
     {
-    question: "What is a ?",
-    buttons: ["incorrect", "incorrect", "incorrect", "True or False"],
-    answer: "correct Q4",
+    question: "What symbol is used to denote a string in Javascript?",
+    btnChoices: ["Brackets", "Curley brackets", "Carrots", "Parentheses"],
+    answer: "Parentheses",
     },
         
 ]
@@ -32,116 +32,130 @@ var questionArray = [ // object were I am storing all of the questions, button i
 var currentQuestionIndex = 0;
 var secondsLeft = 30; //seconds to take the quiz
 
-//var currentQuizQuestion = questionArray[currentQuestionIndex];
-// console.log(currentQuizQuestion);
+
+
+
 
 // Functions 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------
 
 function startQuiz() {
 
-    // dynamically remove all the pre-quiz HTML content   
-    var startQuizBtn = document.getElementById("start-of-quiz");  // creating a variable for all of the content I want to remove/hide in JS when the quiz starts
-    console.log(startQuizBtn);
-    startQuizBtn.remove(); // removes the <div id="start-of-quiz" class="hideWhenQuizStarts"> in my HTML
+    displayQuiz(); // call this function to dispaly quiz presses the start button
+    countdown(); // start quiz countdown when start quiz button is pressed 
+
+    // dynamically remove all the pre-quiz HTML content
+    var hideVisible = document.getElementById("start-of-quiz"); // creating a variable for all of the content I want to remove/hide in JS when the quiz starts
+        //hideVisible.setAttribute("class","hide")
+    hideVisible.remove(); // removes the div in my HTML
 
     // dynamically show all of the post-quiz HTML content
-    var contentStartQuiz = document.getElementById("show-When-Quiz-Starts");
-    console.log(contentStartQuiz);
-    //contentStartQuiz.style.   MAYBE TRY AND COME BACK FOR STYLING!!!!!!!!!!!!!!!!!!!!!
-    contentStartQuiz = "visible";
-    
-  
-    questions() // call this function to dispaly questions after the user presses the start button
-    buttons() // call this function to display buttons after the user presses the start button
+    var showInvisible = document.getElementById("questions-buttons");
+    showInvisible.removeAttribute("class");   
+
 };
 
-startQuizBtn.addEventListener("click", startQuiz); // when the user clicks the start quiz button my quiz will start
 
+function displayQuiz() {
 
-function questions() {
-
-    //var currentQuestionIndex = 0; //global variable above, starting at 0 index
-
-    var currentQuizQuestion = questionArray[currentQuestionIndex].question;
+    // starting at currentQuestionIndex of 0, global variable above
+    var currentQuizQuestion = questionArray[currentQuestionIndex];
     console.log(currentQuizQuestion);
 
+
     var questionElement = document.getElementById("questions"); // variable for where I will dynamically access the <h2> tag where the questions will go
-    questionElement.textContent = currentQuizQuestion;
+    questionElement.textContent = currentQuizQuestion.question;
 
-};
+    console.log(questionElement.textContent)
+
+    questionElement.innerHTML = "";
 
 
+    currentQuizQuestion.btnChoices.forEach(function(buttons) { 
 
-function buttons() {
-
-    var currentButtons = questionArray[currentQuestionIndex].buttons;
-    console.log(currentButtons);
-     
-    currentButtons.forEach(function(buttons) {  // specifically for iterating over an array (.forEach)
+        //console.log(buttons);
 
         var dynamicButtons = document.createElement("BUTTON");
-        dynamicButtons.setAttribute("dynamic-buttons", buttons)
+        dynamicButtons.setAttribute("dynamic-buttons", "buttons")
+        dynamicButtons.setAttribute("value",buttons)
         dynamicButtons.textContent = buttons;
 
-        dynamicButtons.onclick = handleDynamicBtns()
-    
         document.body.appendChild(dynamicButtons);
-       
-        buttons.onclick = handleDynamicBtns();
-
+        dynamicButtons.onclick = handleDynamicBtns;
     })
 
+    
+  
+   
 };
 
 
 function handleDynamicBtns() {
 
-    var answer = questionArray[currentQuestionIndex].answer;
 
-    console.log(answer);
-     if (this.value !== questionArray[currentQuestionIndex].answer) { //.this refers to my questionArray object
+    var dynamicBtnAns = questionArray[currentQuestionIndex].answer;
+    console.log(dynamicBtnAns);
+
+     if (this.value !== dynamicBtnAns) { //.this refers to my questionArray object
        
-
-        var alert = document.getElementById("correct-incorrect");
-        console.log(alert);
-        alert.textContent = "Incorrect!"
-     } else {
-         alert.textContent = "Correct!"
+        var alertAns = document.getElementById("correct-incorrect");
+        alertAns.textContent = "Incorrect!"
      }
+     else {
+         alertAns.textContent = "Correct!"
+     };
 
       currentQuestionIndex++;
 
-      //return currentQuestionIndex;
+      if (currentQuestionIndex === questionArray.length) {
+          endQuiz();
+      } 
+      else {
+          displayQuiz ();
+      };
+  
+   
        
+ };
+
+
+
+ function endQuiz() {
+
+    // hide the questions and buttons
+    var showInvisible = document.getElementById("questions-buttons");
+    showInvisible.setAttribute("class","hide");
+    
+    // display the quiz ends screen
+     var endScreen = document.getElementById("quiz-ends");
+     console.log(endScreen)
+     endScreen.removeAttribute("class");
 
  };
 
 
-function quizEnd() {
 
-    if (quizTime ===0) {
-        
-    }
-
-};
-
-
-
-    
+ function countdown() {
+ 
     timeEl = document.getElementById("time");
 
     var countdown = setInterval(function(){
         secondsLeft--; //decrease time by 1 second
         timeEl.textContent = secondsLeft
 
-        if(secondsLeft ===0) {
+        if(secondsLeft === 0) {
             clearInterval(countdown);
+        } else {
+            displayQuiz()
         }
+
     }, 1000);
+ }
+   
+ startQuizBtn.addEventListener("click", startQuiz); // when start button pressed quiz will start
 
+ 
 
-    
     
 
  // for (var i=0; i < questionArray.length; i++); {
@@ -167,3 +181,28 @@ function quizEnd() {
     //     document.getElementById("questions").innerHTML = currentQuizQuestion
     // }
     //  for (var i=0; i <  questionArray.length; i++) {
+
+    //  function buttons() {
+
+
+
+
+//     var currentButtons = questionArray[currentQuestionIndex].buttons;
+//     console.log(currentButtons);
+     
+//     currentButtons.forEach(function(buttons) {  // specifically for iterating over an array (.forEach)
+
+//         var dynamicButtons = document.createElement("BUTTON");
+//         dynamicButtons.setAttribute("dynamic-buttons", "buttons")
+//        // dynamicButtons.setAttribute("value",buttons)
+//         dynamicButtons.textContent = buttons;
+
+//         dynamicButtons.onclick = handleDynamicBtns()
+    
+//         document.body.appendChild(dynamicButtons);
+       
+//         dynamicButtons.onclick = handleDynamicBtns();
+
+//     })
+
+//  };

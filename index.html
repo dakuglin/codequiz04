@@ -13,11 +13,11 @@
         <h1>Coding Quiz Challenge</h1>
     </header>
     <div class="center">
-    <div id="quiz-scores">Time: <span id="time"></span></div>
+    <div class="hideQuizEnd" id="quiz-scores">Time: <span id="time"></span></div>
     </div>
     <div class="container"> 
 
-        <div class="visible" id="start-of-quiz">
+        <div class="visible" id="start-of-quiz">  <!--visible at the start of the quiz-->
             <h2>Directions</h2>
             <p>
                 Press the start button below to begin.
@@ -40,15 +40,15 @@
         </div>
 
 
-        <div class="invisible" id="quiz-ends">
+        <div class="invisible" id="quiz-ends"> <!--visible at the end of the quiz-->
             <h2>Congratulations!</h2>
-                 <p>
-                     You completed the quiz! Your score is <span id="score">.</span>
-                <br>
-                     Please enter your initials: <input type="text" id="initials"/>
-                </p> 
-               
-                    <button type="button" id= "score-button" class="btn btn-primary btn-sm">Submit Results</button> 
+            <p>
+                You completed the quiz! Your score is: <span id="score">.</span>
+            <br>
+                Please enter your initials: <input type="text" id="initials"/>
+            </p> 
+                <button type="button" id= "score-button" class="btn btn-primary btn-sm">Submit Results</button> 
+            <div id="msg"></div>  
         </div>
 
 

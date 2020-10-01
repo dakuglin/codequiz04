@@ -3,9 +3,7 @@
 
 var currentQuestionIndex = 0; //index for questionArray location
 
-var secondsStart = 30; //seconds to take the quiz
-
-var wrongAns = -5;
+var secondsLeft = 60; //seconds to take the quiz
 
 var questionArray = [ //object were I am storing all of the questions, button informaiton, and answers
 
@@ -36,15 +34,14 @@ var questionArray = [ //object were I am storing all of the questions, button in
 ]
 
 
-
 // Functions 
 //--------------------------------------------------------------------------------------------------------
 
 function startQuiz() {
 
     dynamicQuestion(); //call this function to dispaly quiz presses the start button
- 
-    //countdown(); //start quiz countdown when start quiz button is pressed 
+
+    countdown();
 
     //remove all the pre-quiz HTML content
     var hideVisible = document.getElementById("start-of-quiz"); // creating a variable for all of the content I want to remove/hide in JS when the quiz starts
@@ -62,6 +59,7 @@ function dynamicQuestion() {
 
     if (currentQuestionIndex === questionArray.length) { //when we loop through 4 times
         endQuiz();
+
     }
 
     // starting at currentQuestionIndex of 0, global variable above
@@ -79,15 +77,19 @@ function dynamicQuestion() {
 
 function dynamicButtons() {
 
+    // var newBtns = document.getElementById("correct-incorrect");
+    // newBtns = "";
+    document.getElementById("dynamic-buttons").innerHTML = "";
+
     var currentQuizQuestion = questionArray[currentQuestionIndex];
     console.log(currentQuizQuestion);
 
     currentQuizQuestion.btnChoices.forEach(function(buttons) { 
         var dynamicButtonsEl = document.createElement("BUTTON");
-        dynamicButtonsEl.setAttribute("questions", "buttons")
         dynamicButtonsEl.setAttribute("value",buttons)
         dynamicButtonsEl.textContent = buttons;
-        document.body.appendChild(dynamicButtonsEl);
+        document.getElementById("dynamic-buttons").appendChild(dynamicButtonsEl);
+        document.getElementById("")
         dynamicButtonsEl.onclick = handleClickDynamicBtns;
     }) 
 
@@ -106,58 +108,91 @@ function handleClickDynamicBtns(e) {
     //console.log(answerChosen)
 
     if (answerChosen !== dynamicBtnAns) { //.this refers to my questionArray object 
+        console.log(answerChosen)
+
         alertAns.textContent = "Incorrect!"
         currentQuestionIndex++;
         dynamicQuestion();
 
+        secondsLeft -= 15;  //subtract and equal to the secondsLeft of quiz defined above
+        if (secondsLeft <= 0) {
+            secondsLeft = 0;
+        }
+
     } else {
+      
         alertAns.textContent = "Correct!"
         currentQuestionIndex++;
         dynamicQuestion()
     };
 
+    setTimeout(function () {
+        alertAns.textContent = '';
+    }, 1000);
 
 };
 
 
 function endQuiz() {
 
-    var clearQuestionHTML = document.getElementById("questions");
-    clearQuestionHTML.remove();
-
+    //hiding my buttons 
     var clearButtonContent = document.getElementById("questions-buttons");
-    //clearButtonContent.remove();
-    clearButtonContent.setAttribute("class","hide");
+    clearButtonContent.setAttribute("class","invisible");
 
-    // // hide the questions and buttons
-    var showInvisible = document.getElementById("questions-buttons");
-    showInvisible.setAttribute("class","hide");
-    
-    // display the quiz ends screen
+     // display the quiz ends screen
      var endScreen = document.getElementById("quiz-ends");
      console.log(endScreen)
      endScreen.removeAttribute("class");
 
+    //display the score you recieved on the quiz
+    document.getElementById("score").textContent = secondsLeft;
+
 };
 
 
-// function countdown() {
+function countdown() {
  
-//     timeEl = document.getElementById("time");
+    timeEl = document.getElementById("time");
 
-//     var countdown = setInterval(function(){
-//         secondsStart--; //decrease time by 1 second
-//         timeEl.textContent = secondsStart
+    var countdown = setInterval(function(){
+        secondsLeft--; //decrease time by 1 second
+        timeEl.textContent = secondsLeft
 
-//         if(secondsStart === 0) {
-//             clearInterval(countdown);
-//         } 
-//         // else {
-//         //     dynamicQuestion();
-//         // }
+        if(secondsLeft === 0) {
+            clearInterval(countdown);
+            endQuiz();
+        } 
 
-//     }, 1000);
-// }
+    }, 1000);
+}
+
+// where i will save user initials to local storage
+var submitQuizButton = document.getElementById("score-button");
+var msgDiv = document.getElementById("msg");
+
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+  }
+
+
+submitQuizButton.addEventListener("click",function event() {
+    event.preventDefault;
+
+
+    var initials = document.querySelector("#score-button").value; 
+    console.log(initials)
+   
+    if (initials === ""){
+        displayMessage("Error, must submit initials.");
+    } else {
+        displayMessage("Successfull submitted score!");
+        localStorage.setItem("Initials");
+    }
+
+});
+
+    
    
  startQuizBtn.addEventListener("click", startQuiz); // when start button pressed quiz will start
 

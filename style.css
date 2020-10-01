@@ -1,21 +1,20 @@
 
- /* controls the webpage background color and font of text (sans-serif) */
+  /* Controls stuff that is not changing on the page */
  body {
    font-family: sans-serif;
    background-color: whitesmoke;
- }
- 
- /* controls the placement of all the tags, box, buttons, on the webpage */
+ };
+
+ header {
+  padding: 80px;
+};
+
  .container {
    padding-top: 150px;
    padding-left: 20px;
    padding-right: 20px;
  }
  
- /* controls the placement, location, and color of the h1 tag on the webpage */
- header {
-   padding: 80px;
- } 
 
 /* controls the h1 tag*/
  h1 {
@@ -37,8 +36,8 @@
    margin: 0 auto;
    max-width: 1300px;
    padding: 30px 40px;
-  
  }
+
 
   .container {
     background-color: white;
@@ -48,9 +47,9 @@
     font-size: 20px;
     margin: 0 auto;
     max-width: 1300px;
-    padding: 30px 40px;
-    
+    padding: 30px 40px; 
   }
+
  
  /* controls the start button */
  .btn {
@@ -65,12 +64,29 @@
    padding: 14px 34px;
    text-align: center;
    cursor: pointer;
-   
  } 
+
+ /* controls the start button */
+ #dynamic-buttons {
+  border: none;
+  background-color: rgb(54, 2, 52);
+  border-radius: 25px;
+  color: white;
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+} 
+
+
 
  .invisible {
   display: none;
 }
+
 
 #quiz-scores {
   text-align: center;
@@ -78,8 +94,17 @@
   padding-bottom: 30px;
 }
  
+
 .correct-incorrect {
   text-align: center;
 }
 
+/*user initials */
+#msg {
+  visibility: hidden;
+  margin-top: 20px;
+  font-weight: 700;
+  height: 1.2em;
+  font-size: 1.2em;
+}
  

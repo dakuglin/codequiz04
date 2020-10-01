@@ -9,8 +9,8 @@ var questionArray = [ //object were I am storing all of the questions, button in
 
     { 
     question: "What is the correct symbol for adding comments in JavaScript?",
-    btnChoices: ["//", "<!--", "/*", "!!"],
-    answer: "//",
+    btnChoices: ["   //   ", "   <!--   ", "   /*   ", "   !!   "],
+    answer: "   //   ",
     },
         
     {
@@ -96,7 +96,6 @@ function dynamicButtons() {
 };
 
 
-
 function handleClickDynamicBtns(e) {
 
     e.preventDefault();
@@ -141,7 +140,6 @@ function endQuiz() {
 
      // display the quiz ends screen
      var endScreen = document.getElementById("quiz-ends");
-     console.log(endScreen)
      endScreen.removeAttribute("class");
 
     //display the score you recieved on the quiz
@@ -166,33 +164,54 @@ function countdown() {
     }, 1000);
 }
 
-// where i will save user initials to local storage
-var submitQuizButton = document.getElementById("score-button");
-var msgDiv = document.getElementById("msg");
+// where I will save user initials to local storag
+
+
+// var submitQuizButton = document.getElementById("score-button");
+// var msgDiv = document.getElementById("msg");
+
 
 function displayMessage(type, message) {
+    var msgDiv = document.getElementById("msg");
     msgDiv.textContent = message;
     msgDiv.setAttribute("class", type);
-  }
+}
 
 
-submitQuizButton.addEventListener("click",function event() {
-    event.preventDefault;
 
+
+
+
+
+
+var submitQuizButton = document.getElementById("score-button");
+
+submitQuizButton.addEventListener("click",function (e) {
+
+    e.preventDefault;
 
     var initials = document.querySelector("#score-button").value; 
-    console.log(initials)
-   
-    if (initials === ""){
+
+    var userQuizInfo = {
+        initials: initials,
+        score: secondsLeft,
+    }
+
+    if (initials === "") {
         displayMessage("Error, must submit initials.");
     } else {
         displayMessage("Successfull submitted score!");
-        localStorage.setItem("Initials");
     }
+
+    var quizUsers = localStorage.setItem("Info",userQuizInfo)
+    console.log(quizUsers)
 
 });
 
-    
+
+
+var highscores = document.getElementById("nav-link");
+
    
  startQuizBtn.addEventListener("click", startQuiz); // when start button pressed quiz will start
 

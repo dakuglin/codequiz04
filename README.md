@@ -10,7 +10,6 @@
     * // when button is pressed, quiz starts and timer starts
 
 
-    // can this all be done in a self containing loop???
          * //user is presented with first multiple choice question
             * //if correct, alerts Correct!
             * //if wrong, alerts Wrong! and time decucts 
